@@ -1,10 +1,18 @@
 pipeline {
     agent any
 
+    input {
+        message 'Choose profile'
+        parameters {
+            choice choices: ['release', 'prod', 'dev'], name: 'profile'
+        }
+    }
+
+
     stages {
-        stage('Choose profile') {
+        stage('Build') {
             steps {
-                sh "mvn help:all-profiles"
+                sh "mvn clean install -P$profile"
             }
         }
     }
