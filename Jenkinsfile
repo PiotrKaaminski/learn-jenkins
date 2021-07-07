@@ -3,10 +3,12 @@ pipeline {
 
     stages {
         stage('Choose profile') {
-            input {
-                message 'Choose profile'
-                parameters {
-                    choice choices: ['release', 'prod', 'dev'], name: 'profile'
+            steps {
+                input {
+                    message 'Choose profile'
+                    parameters {
+                        choice choices: ['release', 'prod', 'dev'], name: 'profile'
+                    }
                 }
             }
         }
