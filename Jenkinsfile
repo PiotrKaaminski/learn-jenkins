@@ -3,8 +3,10 @@ pipeline {
 
     stages {
         stage('Input') {
-            input {
-                message 'Do you want to proceed?'
+            steps {
+                input {
+                    message 'Do you want to proceed?'
+                }
             }
         }
 
