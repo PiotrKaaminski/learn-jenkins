@@ -2,20 +2,18 @@ pipeline {
     agent any
 
     stages {
-            stage('Input') {
-                steps {
-                    input{
-                        message 'Do you want to proceed?'
-                    }
-                }
-            }
-
-            stage('If Proceed is clicked') {
-                steps {
-                    print('hello')
-                }
+        stage('Input') {
+            input {
+                message 'Do you want to proceed?'
             }
         }
+
+        stage('If Proceed is clicked') {
+            steps {
+                print('hello')
+            }
+        }
+    }
 
     /*stages {
         stage('Choose profile') {
