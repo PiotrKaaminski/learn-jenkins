@@ -24,19 +24,19 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <profile.response>release</profile.response>
+                <release.response>release</release.response>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
-                <profile.response>production</profile.response>
+                <prod.response>production</prod.response>
             </properties>
         </profile>
         <profile>
             <id>dev</id>
             <properties>
-                <profile.response>development</profile.response>
+                <dev.response>development</dev.response>
             </properties>
         </profile>
     </profiles>

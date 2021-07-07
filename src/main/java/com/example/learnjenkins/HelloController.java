@@ -7,12 +7,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @Value("${profile.response}")
-    private String response;
+    @Value("${release.response}")
+    private String release;
+    @Value("${prod.response}")
+    private String prod;
+    @Value("${dev.response}")
+    private String dev;
 
     @GetMapping("/")
     public String hello() {
-        return "Hello from " + response + " profile at main branch";
+        String message = "|";
+        if (!release.startsWith("@")) {
+            message += release + " ";
+        }
+        if (!prod.startsWith("@")) {
+            message += prod + " ";
+        }
+        if (!dev.startsWith("@")) {
+            message += dev + " ";
+        }
+        message += "|";
+        return "Hello from " + message + " profile at main branch";
     }
 
 }
