@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Input') {
             steps {
-                input {
+                input (
                     message "Do you want to proceed?"
-                }
+                )
             }
         }
 
