@@ -10,9 +10,9 @@ public class HelloController {
     @Value("${profile.response}")
     private String response;
 
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String hello() {
-        return response;
+        return "Hello from " + response + " profile at main branch";
     }
 
 }
