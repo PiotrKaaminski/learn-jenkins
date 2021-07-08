@@ -19,11 +19,10 @@ pipeline {
                 sh "mvn clean install -Prelease,dev"
             }
         }
-
-        post {
-            success {
-                archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
-            }
+    }
+    post {
+        success {
+        archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
         }
     }
 
