@@ -13,7 +13,7 @@ pipeline {
                 input (
                     message: "Provide profiles",
                     ok: "provided something",
-                    parameters: {[
+                    parameters: [
                         extendedChoice(
                             multiSelectDelimiter: ',',
                             name: 'profiles',
@@ -25,7 +25,7 @@ pipeline {
                             groovyClasspath: '',
                             groovyScript: 'return ["release", "prod", "dev"]'
                         )
-                    ]}
+                    ]
                 )
             }
         }
