@@ -23,11 +23,12 @@ pipeline {
             }
         }
     }
+    /* działający fragment do zapisania wyniku
     post {
         success {
-        //archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
+        archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
         }
-    }
+    }*/
 
    /* agent any
 
