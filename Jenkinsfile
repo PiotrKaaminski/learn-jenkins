@@ -1,5 +1,23 @@
 pipeline {
     agent any
+    parameters {
+        choice(
+            name: 'CHOICE',
+            choices: ['one', 'two', 'three'],
+            description: ''
+        )
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Choice: ${params.CHOICE}"
+                sh "echo Choice: ${params.CHOICE}"
+                sh 'echo Choice: $CHOICE'
+            }
+        }
+    }
+
+   /* agent any
 
     stages {
         stage('Input') {
@@ -17,7 +35,7 @@ pipeline {
         }
     }
 
-    /*stages {
+    stages {
         stage('Choose profile') {
             steps {
                 script {
