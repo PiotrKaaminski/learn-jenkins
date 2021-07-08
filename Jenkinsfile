@@ -4,18 +4,19 @@ pipeline {
     stages {
         stage("Choose profiles") {
             steps {
-                input (
+                /*input (
                   message: "provide profiles",
                   parameters: {
                     extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "prod", "dev"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
                   )
-                }
+                }*/
+                input 'provide profiles'
             }
         }
 
         stage('Build') {
             steps {
-                sh "mvn clean install -P$profiles"
+                sh "mvn clean install -Prelease,dev"
             }
         }
 
