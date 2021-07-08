@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage("Choose profiles") {
             input (
-              message 'fdsafdsa'
-              parameters {
+              message: 'fdsafdsa'
+              parameters: {
                 extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "prod", "dev"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
               )
             }
