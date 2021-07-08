@@ -19,7 +19,11 @@ pipeline {
                             name: 'profiles',
                             quoteValue: false,
                             saveJSONParameterToFile: false,
-                            visibleItemCount: 5
+                            visibleItemCount: 5,
+                            type: PT_CHECKBOX,
+                            bindings: '',
+                            groovyClasspath: '',
+                            groovyScript: 'return ["release", "prod", "dev"]'
                         )
                     }
                 )
