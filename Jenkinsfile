@@ -1,18 +1,25 @@
 pipeline {
     agent any
-    parameters {
-        choice(
-            name: 'CHOICE',
-            choices: ['one', 'two', 'three'],
-            description: ''
-        )
-    }
+
     stages {
-        stage('Example') {
+        stage("Choose profiles") {
+            input (
+              message 'fdsafdsa'
+              parameters {
+                extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "prod", "dev"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
+              )
+            }
+        }
+
+        stage('Build') {
             steps {
-                echo "Choice: ${params.CHOICE}"
-                sh "echo Choice: ${params.CHOICE}"
-                sh 'echo Choice: $CHOICE'
+                sh "mvn clean install -P$profiles"
+            }
+        }
+
+        post {
+            success {
+                archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
             }
         }
     }
