@@ -10,17 +10,7 @@ pipeline {
                     extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "prod", "dev"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
                   )
                 }*/
-                input (message: "Provide profiles") {
-                    parameters {
-                        extendedChoice(
-                            groovyScript: 'return ["release", "prod", "dev"]',
-                            multiSelectDelimiter: ',',
-                            name: 'profiles',
-                            type: 'PT_CHECKBOX',
-                            visibleItemCount: 5
-                        )
-                    }
-                }
+                input (message: "Provide profiles", ok: "provided something")
             }
         }
 
