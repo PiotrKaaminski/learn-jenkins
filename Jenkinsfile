@@ -10,19 +10,22 @@ pipeline {
                     extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "prod", "dev"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
                   )
                 }*/
-                input 'provide profiles'
+                input {
+                    message "Provide profiles"
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh "mvn clean install -Prelease,dev"
+                echo "Start building"
+                //sh "mvn clean install -Prelease,dev"
             }
         }
     }
     post {
         success {
-        archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
+        //archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
         }
     }
 
