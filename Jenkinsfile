@@ -1,48 +1,42 @@
 pipeline {
     agent any
 
+    parameters {
+        extendedChoice(
+            name: 'PROFILES',
+            defaultValue: '',
+            type: 'PT_CHECKBOX',
+            groovyScript: "return ['release', 'dev', 'prod']"
+        )
+    }
+
     stages {
-        stage("Choose profiles") {
+        /*stage("Choose profiles") {
             steps {
-                /*input (
+                input (
                   message: "provide profiles",
                   parameters: {
                     extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "prod", "dev"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
                   )
-                }*/
-                input (
-                    message: "Provide profiles",
-                    ok: "provided something",
-                    parameters: [
-                        extendedChoice(
-                            multiSelectDelimiter: ',',
-                            name: 'profiles',
-                            quoteValue: false,
-                            saveJSONParameterToFile: false,
-                            visibleItemCount: 5,
-                            type: PT_CHECKBOX,
-                            bindings: '',
-                            groovyClasspath: '',
-                            groovyScript: 'return ["release", "prod", "dev"]'
-                        )
-                    ]
-                )
+                }
+
             }
-        }
+        }*/
 
         stage('Build') {
             steps {
                 echo "Start building"
-                //sh "mvn clean install -Prelease,dev"
+                sh "mvn clean install -P$PROFILES"
             }
         }
     }
-    /* działający fragment do zapisania wyniku
+
+    //działający fragment do zapisania wyniku
     post {
         success {
         archiveArtifacts  artifacts: 'target/*.jar', followSymlinks: false, onlyIfSuccessful: true
         }
-    }*/
+    }
 
    /* agent any
 
