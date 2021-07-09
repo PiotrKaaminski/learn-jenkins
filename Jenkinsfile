@@ -1,15 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-        extendedChoice(
-            name: 'PROFILES',
-            defaultValue: '',
-            type: 'PT_CHECKBOX',
-            groovyScript: "return ['release', 'dev', 'prod']"
-        )
-    }
-
     stages {
         /*stage("Choose profiles") {
             steps {
@@ -25,6 +16,10 @@ pipeline {
 
         stage('Build') {
             steps {
+                script {
+                    env.PROFILES = input message: 'Choose profiles', ok: 'Build',
+                    parameters: [extendedChoice(name: 'PROFILES', choices: 'release\ndev\nprod', description: 'Choose building profiles')]
+                }
                 echo "Start building"
                 sh "mvn clean install -P$PROFILES"
             }
