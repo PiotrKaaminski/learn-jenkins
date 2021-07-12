@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Choose profiles') {
             steps {
-                sh 'mvn help:all-profiles'
+                sh 'mvn help:all-profiles | grep "Profile Id:"'
                 script {
                     gv = load "listAvailableProfiles.groovy"
                     //echo gv.availableProfiles()
