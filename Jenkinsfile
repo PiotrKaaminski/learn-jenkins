@@ -8,7 +8,7 @@ pipeline {
                 input (
                   message: "provide profiles",
                   parameters: {
-                    extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'gv.availableProfiles()', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
+                    extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "dev", "prod"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
                   )
                 }
 
