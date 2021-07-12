@@ -1,4 +1,3 @@
-def gv
 pipeline {
     agent any
 
@@ -9,9 +8,7 @@ pipeline {
                     AVAILABLE_PROFILES = sh (
                         script: 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr \'\\n\' \',\'',
                         returnStdout: true
-                    ).trim()
-                    gv = load "listAvailableProfiles.groovy"
-                    //echo gv.availableProfiles()
+                    )
                     env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [extendedChoice(name: 'PROFILES', value: AVAILABLE_PROFILES, multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
 
@@ -21,7 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Start building"
-                //sh "mvn clean install -P$PROFILES"
+                sh "mvn clean install -P$PROFILES"
             }
         }
     }
