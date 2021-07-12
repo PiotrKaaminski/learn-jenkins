@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Choose profiles') {
             steps {
+                sh 'pwd'
                 sh 'cd $WORKSPACE'
                 sh 'pwd'
                 sh 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr "\n" ","'
