@@ -8,7 +8,7 @@ pipeline {
                 sh 'pwd'
                 sh 'cd $WORKSPACE'
                 sh 'pwd'
-                sh 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr "\n" ","'
+                sh 'mvn help:all-profiles'
                 script {
                     gv = load "listAvailableProfiles.groovy"
                     //echo gv.availableProfiles()
