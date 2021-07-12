@@ -1,5 +1,5 @@
 def availableProfiles() {
-    return "release\nprod\ndev"
+    return ["release", "dev", "prod"]
 }
 
 return this
