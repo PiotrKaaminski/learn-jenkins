@@ -12,8 +12,10 @@ pipeline {
             }
         }
         stage('Build') {
-            echo "Start building"
-            sh "mvn clean install -P$PROFILES"
+            steps {
+                echo "Start building"
+                sh "mvn clean install -P$PROFILES"
+            }
         }
     }
 
