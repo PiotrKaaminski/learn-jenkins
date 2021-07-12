@@ -9,6 +9,8 @@ pipeline {
                     script: 'git branch -r | tr \'origin/\' \' \' | tr \'\\n\' \',\'',
                     returnStdout: true
                     )
+
+                    echo AVAILABLE_BRANCHES
                 }
             }
         }
