@@ -5,13 +5,16 @@ pipeline {
     stages {
         stage('Choose profiles') {
             steps {
-                sh 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr \'\\n\' \',\''
+                AVAILABLE_PROFILES = sh (
+                script: 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr \'\\n\' \',\'',
+                returnStdout: true
+                ).trim()
                 script {
                     gv = load "listAvailableProfiles.groovy"
                     //echo gv.availableProfiles()
-                    /*env.PROFILES = input message: 'Choose profiles', ok: 'Build',
-                    parameters: [extendedChoice(name: 'PROFILES', value: values, multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
-                    */
+                    env.PROFILES = input message: 'Choose profiles', ok: 'Build',
+                    parameters: [extendedChoice(name: 'PROFILES', value: AVAILABLE_PROFILES, multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
+
                 }
             }
         }
