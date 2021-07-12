@@ -1,4 +1,4 @@
-def gv = load "listAvailableProfiles.groovy"
+def gv
 pipeline {
     agent any
 
@@ -6,6 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    gv = load "listAvailableProfiles.groovy"
                     env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [extendedChoice(name: 'PROFILES', groovyScript: gv.availableProfiles(), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
                 }
