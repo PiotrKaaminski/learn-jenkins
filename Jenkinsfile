@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Choose branch') {
+            steps {
+                sh 'git branch -r'
+            }
+        }
+
         stage('Choose profiles') {
             steps {
                 script {
@@ -15,6 +21,7 @@ pipeline {
                 }
             }
         }
+
         stage('Build') {
             steps {
                 echo "Start building"
