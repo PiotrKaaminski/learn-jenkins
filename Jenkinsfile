@@ -1,25 +1,26 @@
+def gv = load "listAvailableProfiles.groovy"
 pipeline {
     agent any
 
     stages {
-        /*stage("Choose profiles") {
+        stage("Choose profiles") {
             steps {
                 input (
                   message: "provide profiles",
                   parameters: {
-                    extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "prod", "dev"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
+                    extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'gv.availableProfiles()', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
                   )
                 }
 
             }
-        }*/
+        }
 
         stage('Build') {
             steps {
-                script {
+                /*script {
                     env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [extendedChoice(name: 'PROFILES', groovyScript: 'return ["release", "dev", "prod"]', multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
-                }
+                }*/
                 echo "Start building"
                 sh "mvn clean install -P$PROFILES"
             }
