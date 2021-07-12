@@ -6,8 +6,8 @@ pipeline {
             steps {
                 script{
                     AVAILABLE_BRANCHES = sh (
-                    script: 'git branch -r | sed "s/origin\\///" | tr -d " " | tr "\\n" ","'
-                    returnStdout: true
+                        script: 'git branch -r | sed "s/origin\\///" | tr -d " " | tr "\\n" ","',
+                        returnStdout: true
                     )
 
                     echo AVAILABLE_BRANCHES
