@@ -2,19 +2,14 @@ def gv = load "listAvailableProfiles.groovy"
 pipeline {
     agent any
 
-    stages {
-        stage("Choose profiles") {
-            steps {
-                input (
-                  message: "provide profiles",
-                  parameters: {
-                    extendedChoice bindings: '', groovyClasspath: '', groovyScript: 'return ["release", "dev", "prod"]', multiSelectDelimiter: ',', name: 'profiles', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', visibleItemCount: 5
-                  }
-                )
-
-            }
+    parameters {
+        script {
+            env.PROFILES = input message: 'Choose profiles', ok: 'Build',
+            parameters: [extendedChoice(name: 'PROFILES', groovyScript: 'return ["release", "dev", "prod"]', multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
         }
+    }
 
+    stages {
         stage('Build') {
             steps {
                 /*script {
