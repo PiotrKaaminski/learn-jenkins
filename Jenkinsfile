@@ -10,13 +10,15 @@ pipeline {
                         returnStdout: true
                     )
 
-                    env.BRANCHES = input message: 'Choose branch', ok: 'Checkout',
-                    parameters: [choice(name: 'BRANCHES', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]
+                    env.BRANCH = input message: 'Choose branch', ok: 'Checkout',
+                    parameters: [choice(name: 'BRANCH', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]
+
+                    sh 'git checkout $BRANCH'
                 }
             }
         }
 
-        /*stage('Choose profiles') {
+        stage('Choose profiles') {
             steps {
                 script {
                     AVAILABLE_PROFILES = sh (
@@ -35,7 +37,7 @@ pipeline {
                 echo "Start building"
                 sh "mvn clean install -P$PROFILES"
             }
-        }*/
+        }
     }
 
     post {
