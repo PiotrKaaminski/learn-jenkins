@@ -1,5 +1,5 @@
 def availableProfiles() {
-    def profiles = 'pwd'.execute().text
+    def profiles = 'mvn help:all-profiles'.execute().text
     return profiles
 }
 

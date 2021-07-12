@@ -5,10 +5,10 @@ pipeline {
     stages {
         stage('Choose profiles') {
             steps {
-                sh 'echo $WORKSPACE'
+                sh 'cd $WORKSPACE'
                 script {
                     gv = load "listAvailableProfiles.groovy"
-                    //echo gv.availableProfiles()
+                    echo gv.availableProfiles()
                     /*env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [extendedChoice(name: 'PROFILES', value: values, multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
                     */
