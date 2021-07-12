@@ -1,5 +1,5 @@
 def availableProfiles() {
-    def profiles = 'ls'.execute().text
+    def profiles = 'pwd'.execute().text
     return profiles
 }
 
