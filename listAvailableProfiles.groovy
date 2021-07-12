@@ -1,5 +1,5 @@
 def availableProfiles() {
-    def profiles = 'cd $WORKSPACE | pwd'.execute().text
+    def profiles = 'pwd'.execute().text
     return profiles
 }
 
