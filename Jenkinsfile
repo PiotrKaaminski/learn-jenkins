@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script{
                     AVAILABLE_BRANCHES = sh (
-                    script: 'git branch -r | sed "s/origin//" | tr \'\\n\' \',\'',
+                    script: 'git branch -r | sed "s/origin//" | sed "s/\///1" | tr "\\n" ","',
                     returnStdout: true
                     )
 
