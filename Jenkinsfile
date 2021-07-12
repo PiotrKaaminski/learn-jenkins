@@ -3,19 +3,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Choose profiles') {
             steps {
                 script {
                     gv = load "listAvailableProfiles.groovy"
-                    def arr = gv.availableProfiles()
-                    def options = arr[0] + "," + arr[1] + "," + arr[2]
-                    echo options
-                    env.PROFILES = input message: 'Choose profiles', ok: 'Build',
-                    parameters: [extendedChoice(name: 'PROFILES', value: options, multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
+                    parameters: [extendedChoice(name: 'PROFILES', value: gv.availableProfiles(), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
                 }
-                echo "Start building"
-                sh "mvn clean install -P$PROFILES"
             }
+        }
+        stage('Build') {
+            echo "Start building"
+            sh "mvn clean install -P$PROFILES"
         }
     }
 
