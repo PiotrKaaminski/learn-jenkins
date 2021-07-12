@@ -6,11 +6,12 @@ pipeline {
             steps {
                 script{
                     AVAILABLE_BRANCHES = sh (
-                        script: 'git branch -r | sed "s/origin\\///" | tr -d " " | tr "\\n" ","',
+                        script: 'git branch -r | sed "s/origin\\///" | tr -d " "',
                         returnStdout: true
                     )
 
-                    echo AVAILABLE_BRANCHES
+                    env.BRANCHES = input message: 'Choose branch', ok: 'Checkout',
+                    parameters: [choice(name: 'BRANCHES', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]
                 }
             }
         }
