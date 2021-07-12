@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Choose branch') {
             steps {
-                sh 'git branch -r'
+                AVAILABLE_BRANCHES = sh (
+                script: 'git branch -r | tr \'origin/\' \'\' | tr \'\\n\' \',\'',
+                returnStdout: true
+                )
+
             }
         }
 
