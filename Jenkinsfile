@@ -6,9 +6,10 @@ pipeline {
         stage('Choose profiles') {
             steps {
                 sh 'cd $WORKSPACE'
+                sh 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr "\n" ","'
                 script {
                     gv = load "listAvailableProfiles.groovy"
-                    echo gv.availableProfiles()
+                    //echo gv.availableProfiles()
                     /*env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [extendedChoice(name: 'PROFILES', value: values, multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
                     */
