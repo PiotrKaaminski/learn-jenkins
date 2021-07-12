@@ -7,10 +7,10 @@ pipeline {
             steps {
                 script {
                     gv = load "listAvailableProfiles.groovy"
-                    String values = gv.availableProfiles()
-                    echo values
-                    env.PROFILES = input message: 'Choose profiles', ok: 'Build',
+                    echo gv.availableProfiles()
+                    /*env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [extendedChoice(name: 'PROFILES', value: values, multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX')]
+                    */
                 }
             }
         }
