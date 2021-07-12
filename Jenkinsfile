@@ -5,11 +5,11 @@ pipeline {
     stages {
         stage('Choose profiles') {
             steps {
-                AVAILABLE_PROFILES = sh (
-                script: 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr \'\\n\' \',\'',
-                returnStdout: true
-                ).trim()
                 script {
+                    AVAILABLE_PROFILES = sh (
+                        script: 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr \'\\n\' \',\'',
+                        returnStdout: true
+                    ).trim()
                     gv = load "listAvailableProfiles.groovy"
                     //echo gv.availableProfiles()
                     env.PROFILES = input message: 'Choose profiles', ok: 'Build',
