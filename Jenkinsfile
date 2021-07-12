@@ -6,6 +6,7 @@ pipeline {
         stage('Choose profiles') {
             steps {
                 sh 'cd $WORKSPACE'
+                sh 'pwd'
                 sh 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr "\n" ","'
                 script {
                     gv = load "listAvailableProfiles.groovy"
