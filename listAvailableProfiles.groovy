@@ -1,5 +1,5 @@
 def availableProfiles() {
-    def profiles = 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr "\n" " "'.execute().text
+    def profiles = 'mvn help:all-profiles'.execute().text
     return profiles
 }
 
