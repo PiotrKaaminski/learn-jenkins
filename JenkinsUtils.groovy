@@ -6,7 +6,7 @@ def getProfiles() {
     for (String module : modules) {
         profiles.append(module).append(",");
     }
-    profiles.deleteCharAt(profiles.length())
+    profiles.deleteCharAt(profiles.length() - 1)
     return profiles.toString()
 }
 
