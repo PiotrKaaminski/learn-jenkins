@@ -1,8 +1,8 @@
 
 
 String profiles() {
-    println env.WORKSPACE
-    return "test"
+    def shellResult = 'cd ' + env.WORKSPACE + ' && ./readProfiles.sh'.execute().text
+    return shellResult
 }
 
 String modules() {
