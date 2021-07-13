@@ -1,11 +1,11 @@
 
 
 String profiles() {
-    def workingDir = 'cd ${WORKSPACE} && pwd'.execute().text
-    println workingDir
-    //def script = './readProfiles.sh'.execute().text
-    //println script
-    //return script
+    def build = this.getProperty('binding').getVariable('build')
+    def listener = this.getProperty('binding').getVariable('listener')
+    def env = build.getEnvironment(listener)
+    println env.WORKSPACE
+    return "test"
 }
 
 String modules() {
