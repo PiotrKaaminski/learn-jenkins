@@ -4,7 +4,12 @@ String profiles() {
     String script = "./readProfiles.sh".execute(null, new File(env.WORKSPACE)).text
     String[] profiles = script.split("\\n\\n")
     for (String profile : profiles) {
-        println profile
+        String[] temp = profile.split("\\n")
+        println "........"
+        for (String tmp : temp) {
+            println tmp
+        }
+        println "........"
     }
     return script
 }
