@@ -2,7 +2,7 @@ String profiles() {
     def script = 'sh readProfiles.sh'.execute()
     def sout = new StringBuffer(), serr = new StringBuffer()
     script.consumeProcessOutput(sout, serr)
-    return sout
+    return sout.toString()
 }
 
 String modules() {
