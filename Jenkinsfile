@@ -24,19 +24,12 @@ pipeline {
             steps {
                 script {
                     gv = load "JenkinsUtils.groovy"
-                    /*AVAILABLE_PROFILES = sh (
-                        script: 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr \'\\n\' \',\'',
-                        returnStdout: true
-                    )*/
-                    /*env.PROFILES = input message: 'Choose profiles', ok: 'Build',
+                    Map<String, String> valuesMap = gv.profiles()
+                    env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [
-                        extendedChoice(name: 'PROFILES', value: gv.profiles(), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
-                        extendedChoice(name: 'MODULES', value: gv.modules(), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
-                    ]*/
-                    //sh 'echo ${WORKSPACE}'
-                    //sh 'chmod +x readProfiles.sh'
-                    //sh 'ls -l'
-                    echo gv.profiles()
+                        extendedChoice(name: 'PROFILES', value: valuesMap.get("buildProfiles"), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
+                        extendedChoice(name: 'MODULES', value: valuesMap.get("modules"), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
+                    ]
                 }
             }
         }
