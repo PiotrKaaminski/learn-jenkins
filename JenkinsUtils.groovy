@@ -1,7 +1,7 @@
 
 
 String profiles() {
-    def shellResult = 'cd ' + env.WORKSPACE + ' && ./readProfiles.sh'.execute().text
+    def shellResult = ('cd ' + env.WORKSPACE + ' && ./readProfiles.sh').execute().text
     return shellResult
 }
 
