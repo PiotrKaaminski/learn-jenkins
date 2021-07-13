@@ -2,9 +2,10 @@ import java.util.stream.Collectors
 
 Map<String, String> profiles() {
     List<String> scriptResult = "./readProfiles.sh".execute(null, new File(env.WORKSPACE)).text.split("\\n\\n")
-    List<String[]> profilesList = scriptResult.forEach(profile -> {
-        return profile.split("\\n")
-    }).collect(Collectors.toList())
+    List<String[]> profilesList = new ArrayList<>()
+    for (int i = 0; i < scriptResult.size(); i++) {
+        profilesList.add(scriptResult.get(i).split("\\n"))
+    }
     String[] modules = profilesList.get(1) - profilesList.get(0)
     Map<String, String> valuesMap = new HashMap<>()
     valuesMap.put("buildProfiles", convertToValues(profilesList.get(0)))
