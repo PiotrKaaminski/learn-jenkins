@@ -3,7 +3,7 @@ String profiles() {
     /*def sout = new StringBuffer(), serr = new StringBuffer()
     script.consumeProcessOutput(sout, serr)
     println sout.toString()*/
-    return "hello from groovy script"
+    return script
 }
 
 String modules() {
