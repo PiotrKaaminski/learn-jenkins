@@ -1,9 +1,9 @@
 String profiles() {
-    def script = 'sh readProfiles.sh'.execute()
-    def sout = new StringBuffer(), serr = new StringBuffer()
+    def script = 'sh readProfiles.sh'.execute().text
+    /*def sout = new StringBuffer(), serr = new StringBuffer()
     script.consumeProcessOutput(sout, serr)
-    println sout.toString()
-    return sout.toString()
+    println sout.toString()*/
+    return script
 }
 
 String modules() {
