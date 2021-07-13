@@ -3,7 +3,7 @@
 String profiles() {
     println env.WORKSPACE
     def script = "cd " + env.WORKSPACE + " && pwd"
-    script.execute()
+    println script
     return "test"
 }
 
