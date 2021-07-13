@@ -33,6 +33,7 @@ pipeline {
                         extendedChoice(name: 'PROFILES', value: gv.profiles(), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
                         extendedChoice(name: 'MODULES', value: gv.modules(), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
                     ]*/
+                    sh 'echo ${WORKSPACE}'
                     sh 'chmod +x readProfiles.sh'
                     sh 'ls -l'
                     echo gv.profiles()
