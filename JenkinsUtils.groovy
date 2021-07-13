@@ -1,11 +1,11 @@
 
 
 String profiles() {
-    def workingDir = 'pwd'.execute().text
+    def workingDir = 'cd ${WORKSPACE} && pwd'.execute().text
     println workingDir
-    def script = './readProfiles.sh'.execute().text
-    println script
-    return script
+    //def script = './readProfiles.sh'.execute().text
+    //println script
+    //return script
 }
 
 String modules() {
