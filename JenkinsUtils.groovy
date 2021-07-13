@@ -1,5 +1,5 @@
 String profiles() {
-    def script = './readProfiles.sh'.execute()
+    def script = 'sh readProfiles.sh'.execute()
     def sout = new StringBuffer(), serr = new StringBuffer()
     script.consumeProcessOutput(sout, serr)
     return sout
