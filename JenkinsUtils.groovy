@@ -1,7 +1,11 @@
 
 
 String profiles() {
-    def script = "./readProfiles.sh".execute(null, new File(env.WORKSPACE)).text
+    String script = "./readProfiles.sh".execute(null, new File(env.WORKSPACE)).text
+    String[] profiles = script.split("\\n")
+    for (String profile : profiles) {
+        println profile
+    }
     return script
 }
 
