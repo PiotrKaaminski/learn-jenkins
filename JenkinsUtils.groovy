@@ -1,7 +1,7 @@
 
 
 String profiles() {
-    def script = 'mvn help:all-profiles'.execute().text
+    def script = './readProfiles.sh'.execute().text
     println script
     return script
 }
