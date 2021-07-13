@@ -1,7 +1,7 @@
 
 
 String profiles() {
-    def script = 'sh readProfiles.sh'.execute().text
+    def script = 'sh ./readProfiles.sh'.execute().text
     println script
     return script
 }
