@@ -1,5 +1,3 @@
-import java.util.stream.Collectors
-
 Map<String, String> profiles() {
     List<String> scriptResult = "./readProfiles.sh".execute(null, new File(env.WORKSPACE)).text.split("\\n\\n")
     List<String[]> profilesList = new ArrayList<>()
@@ -11,18 +9,6 @@ Map<String, String> profiles() {
     valuesMap.put("buildProfiles", convertToValues(profilesList.get(0)))
     valuesMap.put("modules", convertToValues(modules))
     return valuesMap
-}
-
-String modules() {
-    String[] shProfiles = ["dev", "prod", "release"]
-    String[] allProfiles = ["dev", "prod", "bik", "mvp", "release", "tauron"]
-    String[] shModules = allProfiles - shProfiles
-    String modules = ""
-
-    for (String module : shModules) {
-        modules += module + ","
-    }
-    return modules
 }
 
 private String convertToValues(String[] arr) {
