@@ -1,8 +1,8 @@
 String profiles() {
     def script = './readProfiles.sh'.execute()
     def sout = new StringBuffer(), serr = new StringBuffer()
-    proc.consumeProcessOutput(sout, serr)
-    println sout
+    script.consumeProcessOutput(sout, serr)
+    return sout
 }
 
 String modules() {
