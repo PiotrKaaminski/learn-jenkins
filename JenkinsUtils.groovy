@@ -1,4 +1,5 @@
 String profiles() {
+    'chmod +x readProfiles.sh'.execute()
     def script = './readProfiles.sh'.execute()
     def sout = new StringBuffer(), serr = new StringBuffer()
     proc.consumeProcessOutput(sout, serr)
