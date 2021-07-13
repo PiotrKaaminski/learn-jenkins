@@ -1,5 +1,8 @@
 String profiles() {
-    String profiles = './readProfiles.sh'.execute().text
+    def script = './readProfiles.sh'.execute()
+    def sout = new StringBuffer(), serr = new StringBuffer()
+    proc.consumeProcessOutput(sout, serr)
+    println sout
 }
 
 String modules() {
