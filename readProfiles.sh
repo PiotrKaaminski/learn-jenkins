@@ -1,3 +1,2 @@
 #! /bin/bash
-mvn help:all-profiles
-echo 'hello from readProfiles.sh script'
+mvn help:all-profiles | grep "Profile Id:" | awk '{print $3}' | tr '\n' ','
