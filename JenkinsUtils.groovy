@@ -1,13 +1,20 @@
-def getProfiles() {
-    ArrayList<String> mainProfiles = ["release", "prod", "dev"]
-    ArrayList<String> allProfiles = ["release", "bik", "mvp", "dev", "tauron", "prod"]
-    ArrayList<String> modules = allProfiles - mainProfiles
-    StringBuilder profiles = new StringBuilder();
-    for (String module : modules) {
-        profiles.append(module).append(",");
+
+String profiles = ""
+String modules = ""
+
+void init() {
+    String[] shProfiles = ["dev", "prod", "release"]
+    String[] allProfiles = ["dev", "prod", "bik", "mvp", "release", "tauron"]
+    String[] shModules = allProfiles - shProfiles
+
+    for (String profile : shProfiles) {
+        profiles += profile + ","
     }
-    profiles.deleteCharAt(profiles.length() - 1)
-    return profiles.toString()
+
+    for (String module : shModules) {
+        modules += module + ","
+    }
+
 }
 
 return this
