@@ -35,6 +35,7 @@ pipeline {
                     ]*/
                     sh 'chmod +x readProfiles.sh'
                     sh 'ls -l'
+                    sh './readProfiles.sh'
                     echo gv.profiles()
                 }
             }
