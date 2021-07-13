@@ -28,12 +28,12 @@ pipeline {
                         script: 'mvn help:all-profiles | grep "Profile Id:" | awk \'{print $3}\' | tr \'\\n\' \',\'',
                         returnStdout: true
                     )*/
-                    env.PROFILES = input message: 'Choose profiles', ok: 'Build',
+                    /*env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [
                         extendedChoice(name: 'PROFILES', value: gv.profiles(), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
                         extendedChoice(name: 'MODULES', value: gv.modules(), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
-                    ]
-
+                    ]*/
+                    echo gv.profiles()
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Start building"
-                sh "mvn clean install -P$PROFILES"
+                //sh "mvn clean install -P$PROFILES"
             }
         }
     }

@@ -1,11 +1,5 @@
 String profiles() {
-    String[] shProfiles = ["dev", "prod", "release"]
-    String profiles = ""
-
-    for (String profile : shProfiles) {
-        profiles += profile + ","
-    }
-    return profiles
+    String profiles = './readProfiles.sh'.execute().text
 }
 
 String modules() {
