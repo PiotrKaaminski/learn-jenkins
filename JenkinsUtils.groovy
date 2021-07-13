@@ -2,7 +2,7 @@
 
 String profiles() {
     String script = "./readProfiles.sh".execute(null, new File(env.WORKSPACE)).text
-    String[] profiles = script.split("\\n")
+    String[] profiles = script.split("\\n\\n")
     for (String profile : profiles) {
         println profile
     }
