@@ -15,6 +15,7 @@ pipeline {
                     parameters: [choice(name: 'BRANCH', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]*/
 
                     sh 'git checkout main'
+                    sh 'git pull'
                 }
                 sh "echo 'choosing branch'"
             }
