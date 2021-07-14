@@ -27,9 +27,11 @@ pipeline {
                     Map<String, String> valuesMap = gv.profiles()
                     env.PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [
-                        extendedChoice(name: 'PROFILES', value: valuesMap.get("buildProfiles"), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
-                        extendedChoice(name: 'MODULES', value: valuesMap.get("modules"), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
+                        extendedChoice(name: 'prof', value: valuesMap.get("buildProfiles"), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
+                        extendedChoice(name: 'mod', value: valuesMap.get("modules"), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
                     ]
+                    echo PROFILES.get("prof")
+                    echo PROFILES.get("mod")
                 }
             }
         }
