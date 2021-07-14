@@ -30,7 +30,7 @@ pipeline {
                         extendedChoice(name: 'prof', value: valuesMap.get("buildProfiles"), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
                         extendedChoice(name: 'mod', value: valuesMap.get("modules"), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
                     ]
-                    echo PROFILES["mod"]
+                    echo env.PROFILES.prof
                 }
             }
         }
