@@ -6,15 +6,15 @@ pipeline {
         stage('Choose branch') {
             steps {
                 script{
-                    AVAILABLE_BRANCHES = sh (
+                    /*AVAILABLE_BRANCHES = sh (
                         script: 'git branch -r | sed "s/origin\\///" | tr -d " "',
                         returnStdout: true
                     )
 
                     env.BRANCH = input message: 'Choose branch', ok: 'Checkout',
-                    parameters: [choice(name: 'BRANCH', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]
+                    parameters: [choice(name: 'BRANCH', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]*/
 
-                    sh 'git checkout $BRANCH'
+                    sh 'git checkout main'
                 }
                 sh "echo 'choosing branch'"
             }
