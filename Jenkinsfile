@@ -26,13 +26,13 @@ pipeline {
                 script {
                     gv = load "JenkinsUtils.groovy"
                     Map<String, String> valuesMap = gv.profiles()
-                    Map<String, String> params.PROFILES = new HashMap<>()
-                    params.PROFILES = input message: 'Choose profiles', ok: 'Build',
+                    Map<String, String> PROFILES = new HashMap<>()
+                    PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [
                         extendedChoice(name: 'PROF', value: valuesMap.get("buildProfiles"), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_CHECKBOX'),
                         extendedChoice(name: 'MODUL', value: valuesMap.get("modules"), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
                     ]
-                    echo params.PROFILES
+                    echo PROFILES
                 }
             }
         }
