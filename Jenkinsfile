@@ -29,10 +29,11 @@ pipeline {
                     Map<String, String> PROFILES = new HashMap<>()
                     PROFILES = input message: 'Choose profiles', ok: 'Build',
                     parameters: [
-                        extendedChoice(name: 'build profiles', value: valuesMap.get("buildProfiles"), multiSelectDelimiter: ',', description: 'Choose building profiles', type: 'PT_SINGLE_SELECT'),
+                        extendedChoice(name: 'build profile', value: valuesMap.get("buildProfiles"), multiSelectDelimiter: ',', description: 'Choose building profile', type: 'PT_SINGLE_SELECT'),
                         extendedChoice(name: 'modules', value: valuesMap.get("modules"), multiSelectDelimiter: ',', description: 'Choose related modules', type: 'PT_CHECKBOX')
                     ]
-                    echo PROFILES.get("PROF")
+                    echo PROFILES.get("build profile")
+                    echo PROFILES.get("modules")
                 }
             }
         }
