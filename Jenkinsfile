@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Choose branch') {
+        /*stage('Choose branch') {
             steps {
                 script{
                     AVAILABLE_BRANCHES = sh (
@@ -36,7 +36,7 @@ pipeline {
                     echo PROFILES.get("modules")
                 }
             }
-        }
+        }*/
 
         stage('Build') {
             steps {
