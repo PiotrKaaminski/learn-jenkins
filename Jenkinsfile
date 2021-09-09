@@ -41,7 +41,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Start building"
-                sh "mvn clean install -P" + PROFILES.get("build profile") + "," + PROFILES.get("modules")
+                sh "mvn clean install"
             }
         }
     }
