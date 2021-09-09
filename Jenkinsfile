@@ -6,13 +6,13 @@ pipeline {
         stage('Choose branch') {
             steps {
                 script{
-                    /*AVAILABLE_BRANCHES = sh (
+                    AVAILABLE_BRANCHES = sh (
                         script: 'git branch -r | sed "s/origin\\///" | tr -d " "',
                         returnStdout: true
                     )
 
                     env.BRANCH = input message: 'Choose branch', ok: 'Checkout',
-                    parameters: [choice(name: 'BRANCH', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]*/
+                    parameters: [choice(name: 'BRANCH', description: 'Choose source branch', choices: AVAILABLE_BRANCHES)]
 
                     sh 'git checkout main'
                     sh 'git pull'
@@ -41,7 +41,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Start building"
-                //sh "mvn clean install -P$PROFILES"
+                sh "mvn clean install -P$PROFILES"
             }
         }
     }
