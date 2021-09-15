@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sshPublisher(publishers: [
                     sshPublisherDesc(configName: '10.0.6.21', transfers: [
-                        sshTransfer(cleanRemote: false, execTimeout: 120000, makeEmptyDirs: false, remoteDirectory: 'upload-test', sourceFiles: 'target/*.jar')
+                        sshTransfer(cleanRemote: true, execTimeout: 120000, flatten: true, makeEmptyDirs: false, remoteDirectory: 'upload-test', sourceFiles: 'target/*.jar')
                     ])
                 ])
             }
