@@ -9,6 +9,12 @@ pipeline {
                 sh "mvn clean install"
             }
         }
+        stage('SSH scripts') {
+            steps {
+                sh "chmod 777 ssh-script.sh"
+                sh "./ssh-script.sh"
+            }
+        }
     }
 
     post {
