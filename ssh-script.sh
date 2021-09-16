@@ -4,6 +4,7 @@ echo "my script"
 #cd bem-common/dm-model/dm-db-chm
 ssh -N -L 12345:10.0.6.21:12345 -N piotrk@10.0.6.21 & pid=$!
 echo "killing ssh tunnel $pid"
+kill $pid
 
 
 #ssh -i /home/pkaminski/.ssh/new-key -l jenkins 10.0.6.21 "
