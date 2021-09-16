@@ -10,4 +10,4 @@ kill $pid
 #ssh -i /home/pkaminski/.ssh/new-key -l jenkins 10.0.6.21 "
 #  echo 'hello from jenkins' > test.txt
 #"
-rm -r bem-common
+#rm -r bem-common || true
