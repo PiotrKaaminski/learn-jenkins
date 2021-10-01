@@ -17,11 +17,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshPublisher(publishers: [
+                /*sshPublisher(publishers: [
                     sshPublisherDesc(configName: '10.0.6.21', transfers: [
                         sshTransfer(cleanRemote: true, execTimeout: 120000, flatten: true, makeEmptyDirs: false, remoteDirectory: 'upload-test', sourceFiles: 'target/*.jar')
                     ])
-                ])
+                ])*/
             }
         }
     }
